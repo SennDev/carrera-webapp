@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   selector: 'app-login-screen',
   standalone: true,
   imports: [
-    ...SHARED_IMPORTS
+    ...SHARED_IMPORTS,
   ],
   templateUrl: './login-screen.html',
   styleUrl: './login-screen.scss',
@@ -21,31 +21,36 @@ export class LoginScreen implements OnInit {
   public inputType_1: string = 'password';
 
   constructor(
-    private router:Router,
+    private router: Router
   ) { }
 
-  ngOnInit(): void{
-
+  ngOnInit(): void {
   }
 
-  public showPassword(){
-    if(this.inputType_1 === 'password'){
-        this.inputType_1 = 'text';
-    } else {
-        this.inputType_1 = 'password';
-        this.hide_1 = false;
+  public showPassword()
+  {
+    if(this.inputType_1 == 'password'){
+      this.inputType_1 = 'text';
+      this.hide_1 = true;
+    }
+    else{
+      this.inputType_1 = 'password';
+      this.hide_1 = false;
     }
   }
 
   public login(){
-    this.router.navigate(['app', 'home'])
-  }
-
-  public goRegistro(){
-
+    this.router.navigate(['app', "home"]);
   }
 
   public recuperarPwd(){
 
   }
+
+  public goRegistro(){
+    this.router.navigate(["registro"]);
+  }
+
+
+
 }
