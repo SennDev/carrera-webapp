@@ -3,6 +3,24 @@ import { LoginScreen } from './screens/login-screen/login-screen';
 import { RegistroScreen } from './screens/registro-screen/registro-screen';
 
 export const routes: Routes = [
-  {path: '', component: LoginScreen, pathMatch: 'full'},
-  {path: 'registro', component: RegistroScreen, pathMatch: 'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'login',
+    loadComponent: () => import('./screens/login-screen/login-screen').then(m => m.LoginScreen),
+  },
+  {
+    path: 'registro',
+    loadComponent: () => import('./screens/registro-screen/registro-screen').then(m => m.RegistroScreen),
+  },
+
+  {
+    path: 'app',
+    children: [
+      {
+        path: 'home',
+        loadComponent: () => import('./screens/home-screen/home-screen').then(m => m.HomeScreen),
+      }
+    ]
+  },
+  { path: '**', redirectTo: 'login' },
 ];
