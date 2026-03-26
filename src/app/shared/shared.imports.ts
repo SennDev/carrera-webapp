@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Elementos de angular material
 import {MatButtonModule} from '@angular/material/button';
@@ -30,7 +30,7 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 export const SHARED_IMPORTS = [
   CommonModule,
   FormsModule,
-
+  ReactiveFormsModule,
   MatButtonModule,
   MatDividerModule,
   MatIconModule,
