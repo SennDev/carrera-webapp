@@ -183,7 +183,7 @@ export class HomeScreen implements OnInit {
      ACCIÓN: REGISTRAR CÓDIGO
      ========================================================= */
   public registrarCodigo(): void {
-    this.router.navigate(['app', 'instrucciones']);
+    this.router.navigate(['app', 'bases-promocion']);
   }
 
   /* =========================================================

@@ -1,0 +1,90 @@
+<section class="bases-promocion" aria-label="Pantalla de bases de promoción">
+  <mat-drawer-container class="bases-promocion__drawer-container" autosize>
+
+    <mat-drawer #drawer class="bases-promocion__drawer" mode="over" position="start" [opened]="drawerOpen"
+      (closedStart)="drawerOpen = false">
+      <app-left-sidebar [isLogin]="isLogin" (closeSidebar)="closeSidebar()"></app-left-sidebar>
+    </mat-drawer>
+
+    <mat-drawer-content class="bases-promocion__content">
+      <app-header-app (menuToggle)="toggleSidebar()"></app-header-app>
+
+      <main class="body-bases" role="main">
+
+        <div class="bases-actions">
+          <button type="button" class="btn-back" (click)="goBack()" aria-label="Regresar al inicio">
+            <mat-icon aria-hidden="true">arrow_back</mat-icon>
+            <span>Regresar</span>
+          </button>
+        </div>
+
+        <div class="content-wrapper">
+
+          <section class="section-title">
+            <div class="title-indicator"></div>
+            <h1 class="txt-title">¡HORA DE CORRER!</h1>
+          </section>
+
+          <section class="section-objetivo">
+            <h2 class="txt-subtitle">Objetivo</h2>
+            <p class="txt-paragraph">
+              Estás a punto de jugar Moto Rider, el juego consiste en conducir una motocicleta a través de un camino con autos, tu misión es esquivarlos durante 120 segundos mientras la velocidad va aumentando.
+            </p>
+          </section>
+
+          <section class="section-puntuacion">
+            <h2 class="txt-subtitle">Puntuación</h2>
+
+            <div class="table-responsive">
+              <table class="table-puntos">
+                <thead class="head-table">
+                  <tr>
+                    <th scope="col" class="th-left">ACCIÓN</th>
+                    <th scope="col" class="th-right">PUNTOS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (item of puntuaciones; track item.accion) {
+                    <tr class="tr-table">
+                      <td class="td-left">{{ item.accion }}</td>
+                      <td class="td-right">{{ item.puntos }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="section-info-adicional" aria-label="Información adicional del juego">
+            <h2 class="txt-subtitle">Información adicional</h2>
+
+            <p class="txt-paragraph pb-20">
+              Tienes dos oportunidades por cada código que redimimas.
+            </p>
+            <p class="txt-paragraph pb-20">
+              La 1ra oportunidad es entrenamiento y no genera puntos.
+            </p>
+            <p class="txt-paragraph pb-20">
+              La 2da oportunidad genera puntos, el juego termina si chocas o se termina el tiempo.
+            </p>
+            <p class="txt-paragraph">
+              Verifica que tu conexión a Internet sea estable al momento de jugar.
+            </p>
+
+            <div class="acciones-jugar">
+              <button mat-flat-button type="button" class="btn-jugar-ahora" (click)="jugarAhora()">
+                <span class="text-btn">JUGAR AHORA</span>
+              </button>
+            </div>
+          </section>
+
+        </div>
+
+        <section class="footer" aria-label="Pie de página">
+          <app-footer-app [showLicensed]="showLicensed" (privacyClick)="openPrivacy()" (termsClick)="openTerms()"></app-footer-app>
+        </section>
+
+      </main>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</section>

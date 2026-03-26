@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { LoginScreen } from './screens/login-screen/login-screen';
-import { RegistroScreen } from './screens/registro-screen/registro-screen';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -12,13 +10,16 @@ export const routes: Routes = [
     path: 'registro',
     loadComponent: () => import('./screens/registro-screen/registro-screen').then(m => m.RegistroScreen),
   },
-
   {
     path: 'app',
     children: [
       {
         path: 'home',
         loadComponent: () => import('./screens/home-screen/home-screen').then(m => m.HomeScreen),
+      },
+      {
+        path: 'bases-promocion',
+        loadComponent: () => import('./screens/bases-promocion-screen/bases-promocion-screen').then(m => m.BasesPromocionScreen),
       }
     ]
   },

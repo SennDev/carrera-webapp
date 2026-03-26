@@ -1,0 +1,299 @@
+/* =========================================================
+   BASES PROMOCIÓN - BASE (mobile-first)
+   NO TOCAR - Esta sección controla la vista móvil que ya está perfecta
+   ========================================================= */
+
+.bases-promocion {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.bases-promocion__drawer-container {
+  height: 100vh;
+  background: #ffffff;
+}
+
+.bases-promocion__drawer {
+  width: 85vw;
+  max-width: 340px;
+  border-right: 0;
+}
+
+.bases-promocion__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+/* =========================================================
+   BODY (main)
+   ========================================================= */
+.body-bases {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   BOTÓN REGRESAR
+   ========================================================= */
+.bases-actions {
+  width: 100%;
+  padding: 15px;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  color: #000;
+  font-family: Avenir-Bold, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 0;
+
+  mat-icon {
+    color: #cd0000;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(205, 0, 0, 0.45);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+/* =========================================================
+   CONTENEDOR CENTRAL (Base móvil)
+   ========================================================= */
+.content-wrapper {
+  flex: 1;
+  width: 100%;
+  padding: 0 20px 40px 20px;
+}
+
+/* =========================================================
+   TÍTULO PRINCIPAL
+   ========================================================= */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.title-indicator {
+  width: 4px;
+  height: 28px;
+  background-color: #cd0000;
+}
+
+.txt-title {
+  font-family: Avenir-Bold, sans-serif;
+  font-size: 20px;
+  color: #000;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* =========================================================
+   SECCIÓN: OBJETIVO
+   ========================================================= */
+.section-objetivo {
+  margin-bottom: 40px;
+}
+
+.txt-subtitle {
+  font-family: Avenir-Bold, sans-serif;
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.txt-paragraph {
+  font-family: Avenir, sans-serif;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.pb-20 {
+  padding-bottom: 20px;
+}
+
+/* =========================================================
+   SECCIÓN: PUNTUACIÓN (TABLA)
+   ========================================================= */
+.section-puntuacion {
+  margin-bottom: 40px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-puntos {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 300px;
+}
+
+.head-table {
+  border-bottom: 1px solid rgba(122, 122, 122, 0.3);
+
+  th {
+    font-family: Avenir, sans-serif;
+    font-size: 14px;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: normal;
+    padding: 12px 0;
+  }
+}
+
+.tr-table {
+  border-bottom: 1px solid rgba(122, 122, 122, 0.15);
+
+  td {
+    font-family: Avenir, sans-serif;
+    font-size: 15px;
+    color: #333;
+    padding: 16px 0;
+    vertical-align: middle;
+  }
+}
+
+.th-left, .td-left {
+  text-align: left;
+  padding-right: 15px;
+}
+
+.th-right, .td-right {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   SECCIÓN: INFORMACIÓN ADICIONAL
+   ========================================================= */
+.section-info-adicional {
+  margin-bottom: 20px;
+}
+
+.acciones-jugar {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Botón material: forzar el color exacto */
+:host ::ng-deep button.btn-jugar-ahora.mat-mdc-unelevated-button,
+.btn-jugar-ahora {
+  background-color: #CD0000 !important;
+  color: #FFFFFF !important;
+
+  /* Tokens MDC para compatibilidad */
+  --mdc-filled-button-container-color: #CD0000;
+  --mdc-filled-button-label-text-color: #FFFFFF;
+  --mat-filled-button-state-layer-color: #FFFFFF;
+  --mat-filled-button-ripple-color: rgba(255, 255, 255, 0.2);
+
+  min-width: 220px;
+  height: 44px;
+  border-radius: 0 !important;
+
+  font-family: Avenir, sans-serif !important;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+}
+
+.btn-jugar-ahora .text-btn {
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* =========================================================
+   NUEVO RESPONSIVE: ESCRITORIO (EXPANDIDO)
+   ========================================================= */
+@media (min-width: 768px) {
+
+  /* Mantener el ancho del sidebar colapsado */
+  .bases-promocion__drawer {
+    width: 360px;
+  }
+
+  /* 1. Expansión del Contenedor Central
+     max-width aumentado a 1366px (Estándar laptop)
+     width fluido con márgenes laterales fijos de 40px (total 80px)
+  */
+  .content-wrapper {
+    max-width: 1366px;
+    width: calc(100% - 80px);
+    margin: 20px auto 40px auto;
+    padding: 40px; /* Aumentado padding interno */
+    background: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid rgba(122, 122, 122, 0.1);
+  }
+
+  /*
+     2. Sincronización del Botón Regresar
+     Ajustado para alinearse con los nuevos márgenes del content-wrapper
+  */
+  .bases-actions {
+    max-width: 1366px;
+    width: calc(100% - 80px);
+    margin: 0 auto;
+    padding: 20px 0 0 0; /* Padding lateral 0 porque lo maneja el margin: auto */
+  }
+
+  /* 3. Ajustes de Tipografía para expansión
+  */
+  .txt-title {
+    font-size: 24px;
+  }
+
+  .title-indicator {
+    height: 32px;
+  }
+
+  .txt-subtitle {
+    font-size: 20px; /* Un poco más grande en desktop */
+  }
+
+  /* 4. Mejora de legibilidad de párrafos
+     Aunque el contenedor es ancho (1366px), limitamos el texto largo a
+     una anchura máxima legible (850px) para que no canse la vista.
+  */
+  .txt-paragraph {
+    max-width: 850px;
+    font-size: 17px;
+  }
+
+  /* La tabla de puntuaciones (.table-puntos) no tiene max-width,
+     por lo que se expandirá para llenar los 1366px del contenedor,
+     logrando el efecto de expansión que pidió el profesor.
+  */
+
+  .acciones-jugar {
+    margin-top: 60px; /* Más espacio para el botón en desktop */
+  }
+}
