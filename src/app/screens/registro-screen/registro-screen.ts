@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SHARED_IMPORTS } from '../../shared/shared.imports';
 import { Router } from '@angular/router';
+import { FacadeService } from '../../services/facade-service';
 
 @Component({
   selector: 'app-registro-screen',
@@ -36,7 +37,10 @@ export class RegistroScreen implements OnInit {
     'Sinaloa', 'Sonora', 'Tabasco', 'Tamaulipas', 'Tlaxcala', 'Veracruz', 'Yucatán', 'Zacatecas'
   ];
 
-  constructor(private readonly router: Router) {}
+  constructor(
+    private readonly router: Router,
+    private readonly facade: FacadeService
+  ) {}
 
   ngOnInit(): void {
     this.llenarArrayEdades();
@@ -170,13 +174,51 @@ export class RegistroScreen implements OnInit {
     return esValido;
   }
 
-  public registrar(): void {
-    if (this.validarFormulario()) {
-      console.log('Formulario válido, enviando datos:', this.user);
-      alert('Registro exitoso (Simulado)');
-    } else {
-      console.log('Formulario inválido', this.errors);
+public registrar(): void {
+    if (!this.validarFormulario()) {
+      console.log("Formulario inválido");
+      return;
     }
+
+    this.isLoading = true;
+
+    const data = {
+      first_name: this.user.first_name,
+      last_name: this.user.last_name,
+      email: this.user.email,
+      password: this.user.password,
+      curp: this.user.curp,
+      rfc: this.user.rfc,
+      grado_estudios: this.user.grado_estudios,
+      telefono: this.user.telefono,
+      direccion: this.user.direccion,
+      ciudad: this.user.ciudad,
+      estado: this.user.estado,
+      edad: this.user.edad,
+      terminos_condiciones: this.user.terminos_condiciones
+    };
+
+    this.facade.crearUsuario(data).subscribe({
+      next: (res: any) => {
+        console.log("Registro OK", res);
+
+        this.isLoading = false;
+        alert("Usuario creado correctamente");
+
+        this.router.navigate(['']);
+      },
+      error: (err) => {
+        console.error("Error registro", err);
+
+        this.isLoading = false;
+
+        if (err.error?.message) {
+          alert(err.error.message);
+        } else {
+          alert("Error al registrar usuario");
+        }
+      }
+    });
   }
 
   public terminosCondiciones(): void {
